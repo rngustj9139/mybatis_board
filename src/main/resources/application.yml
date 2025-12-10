@@ -1,6 +1,23 @@
+#spring:
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/mybatis  # ;MVCC=TRUE로 설정해야 여러 컴퓨터가 DB에 접근했을때 빠르게 처리가 된다. (but 최근 버전에는 사용 불가)
+#    username: admin
+#    password: admin
+#    driver-class-name: org.h2.Driver # DB 커넥션과 관련된 설정
+
+# server port
+server:
+  port: 8080
+
+# database
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/mybatis  # ;MVCC=TRUE로 설정해야 여러 컴퓨터가 DB에 접근했을때 빠르게 처리가 된다. (but 최근 버전에는 사용 불가)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_codingrecipe?serverTimezone=Asia/Seoul&&characterEncoding=UTF-8
     username: admin
     password: admin
-    driver-class-name: org.h2.Driver # DB 커넥션과 관련된 설정
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
