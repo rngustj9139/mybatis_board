@@ -13,11 +13,11 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_codingrecipe?serverTimezone=Asia/Seoul&&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/db_codingrecipe?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: admin
     password: admin
 
 # mybatis
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml # 쿼리문들을 담고있는 파일 (인터페이스, 클래스, xml 등등으로 작성한다) (resource 폴더 하위에 mapper 폴더를 만들고 파일을 생성해야함)
+  config-location: classpath:mybatis-config.xml # Mybatis와 관련된 설정파일 (resources 폴더에 파일을 생성해야함)
