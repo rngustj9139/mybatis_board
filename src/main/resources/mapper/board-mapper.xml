@@ -6,6 +6,8 @@
 세미콜론 (;)으로 구분된 덩어리마다 h2에서 실행
 
 [테이블명: board_table]
+default가 붙은 필드는 필수로 insert시 필수입력이 아니다.
+
 drop table if exists board_table;
 create table board_table(
 	id bigint primary key auto_increment,
@@ -31,6 +33,7 @@ create table board_file_table(
 
 <mapper namespace="Board">
     <insert id="save" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
-
+        insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
+            values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
 </mapper>
