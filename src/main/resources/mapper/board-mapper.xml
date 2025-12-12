@@ -2,6 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--
+세미콜론 (;)으로 구분된 덩어리마다 h2에서 실행
+
+[테이블명: board_table]
+drop table if exists board_table;
+create table board_table(
+	id bigint primary key auto_increment,
+    boardTitle varchar(50),
+    boardWriter varchar(20),
+    boardPass varchar(20),
+    boardContents varchar(500),
+    boardHits int default 0,
+    createdAt datetime default now(),
+    fileAttached int default 0
+);
+
+[테이블명: board_file_table]
+drop table if exists board_file_table;
+create table board_file_table(
+    id bigint auto_increment primary key,
+    originalFileName varchar(100),
+    storedFileName varchar(100),
+    boardId bigint,
+    constraint fk_board_file foreign key(boardId) references board_table(id) on delete cascade
+);
+-->
+
 <mapper namespace="Board">
     <insert id="save" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
 
