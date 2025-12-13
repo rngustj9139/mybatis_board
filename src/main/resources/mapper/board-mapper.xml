@@ -39,6 +39,16 @@ IntelliJ Community 버전에서는 XML 오타를 잡아주지 않는다 but Inte
     </insert>
 
     <select id="list" resultType="board">
-        select * from board_table order by id desc
+        select *
+        from board_table
+        order by id desc
     </select>
+
+<!--
+    <select id="list" resultType="board">
+        select id, boardTitle, boardWriter, boardHits, date_format(createdAt, "%Y-%m-%d") as createdAt
+        from board_table
+        order by id desc
+    </select>
+-->
 </mapper>
