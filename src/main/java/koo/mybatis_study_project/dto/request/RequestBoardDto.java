@@ -1,11 +1,11 @@
-package koo.mybatis_study_project.dto;
+package koo.mybatis_study_project.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class BoardDto {
+public class RequestBoardDto {
 
     private String boardWriter;
     private String boardPass; // 게시글 비밀번호
