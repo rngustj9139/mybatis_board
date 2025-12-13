@@ -3,6 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="koo.mybatis_study_project.dto.BoardDto" alias="board"></typeAlias>
+        <typeAlias type="koo.mybatis_study_project.entity.Board" alias="board"></typeAlias>
     </typeAliases>
 </configuration>

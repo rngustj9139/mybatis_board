@@ -1,6 +1,7 @@
 package koo.mybatis_study_project.controller;
 
 import koo.mybatis_study_project.dto.BoardDto;
+import koo.mybatis_study_project.entity.Board;
 import koo.mybatis_study_project.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,16 +17,26 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/save")
-    public String save() {
-        return "save";
+    @GetMapping("/boards/new")
+    public String boardCreateForm() {
+        return "boards/boardCreateForm";
     }
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute BoardDto boardDto) {
+    @PostMapping("/boards/new")
+    public String boardCreate(@ModelAttribute BoardDto boardDto) {
         log.info("boardDto = {}", boardDto);
-        boardService.save(boardDto);
+
+        Board board = new Board();
+        board.setBoardWriter(boardDto.getBoardWriter());
+        board.setBoardTitle(boardDto.getBoardTitle());
+        board.setBoardTitle(boardDto.getBoardTitle());
+        board.setBoardContents(boardDto.getBoardContents());
+
+        boardService.boardCreate(board);
+
         return "index";
     }
+
+
 
 }

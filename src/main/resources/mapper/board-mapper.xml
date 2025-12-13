@@ -32,7 +32,7 @@ create table board_file_table(
 -->
 
 <mapper namespace="Board">
-    <insert id="save" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
+    <insert id="create" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
         insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
             values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
