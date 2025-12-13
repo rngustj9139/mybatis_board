@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 템플릿 엔진 타임리프 적용 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+    <a href="/boards/new">글 작성</a>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성시간</th>
+            <th>조회수</th>
+        </tr>
+        <tr th:each="board: ${boardList}">
+            <td th:text="${board.id}"></td>
+            <td th:text="${board.boardTitle}"></td>
+            <td th:text="${board.boardWriter}"></td>
+            <td th:text="${board.createdAt}"></td>
+            <td th:text="${board.boardHits}"></td>
+        </tr>
+    </table>
 </body>
 </html>

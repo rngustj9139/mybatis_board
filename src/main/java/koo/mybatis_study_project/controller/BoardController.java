@@ -49,6 +49,7 @@ public class BoardController {
                         .map(b -> new ResponseBoardDto(b.getId(), b.getBoardWriter(), b.getBoardTitle(), b.getBoardContents(), b.getBoardHits(), b.getCreatedAt()))
                         .collect(Collectors.toList());
 
+        log.info("List<ResponseBoardDto> = {}", collect);
         model.addAttribute("boardList", collect);
 
         return "boards/boardList";
