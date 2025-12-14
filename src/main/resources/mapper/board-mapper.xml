@@ -7,6 +7,7 @@
 
 [테이블명: board_table]
 default가 붙은 필드는 필수로 insert시 필수입력이 아니다.
+테이블 명과 필드 이름은 Camel Case가 아닌 언더바(_)로 구분되는 Snake Type이 좋긴하다.
 
 drop table if exists board_table;
 create table board_table(
@@ -34,14 +35,25 @@ IntelliJ Community 버전에서는 XML 오타를 잡아주지 않는다 but Inte
 -->
 <mapper namespace="Board">
     <insert id="create" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
-        insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
-            values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
+        insert into board_table(boardTitle, boardWriter, boardPass, boardContents) values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
 
     <select id="list" resultType="board">
         select *
         from board_table
         order by id desc
+    </select>
+
+    <select id="findById" resultType="board" parameterType="Long">
+        select id, boardTitle, boardWriter, boardContents, boardPass, boardHits, createdAt
+        from board_table
+        where id = #{id} <!-- #{} 속 들어가는 이름인 id는 public Board findById(Long id) {} 에서 id 파라미터와 이름이 일치해야함 -->
+    </select>
+
+    <select id="findByTitle" resultType="Board" parameterType="String">
+        select id, boardTitle, boardWriter, boardContents, boardPass, boardHits, createdAt
+        from board_table
+        where boardTitle = #{boardTitle}
     </select>
 
 <!--

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+// @Getter + @Setter + @ToString + @RequiredArgsConstructor == @Data
 @Getter @Setter @ToString
 public class RequestBoardDto {
 

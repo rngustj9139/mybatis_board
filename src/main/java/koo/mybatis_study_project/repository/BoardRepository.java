@@ -22,4 +22,12 @@ public class BoardRepository {
         return sqlSessionTemplate.selectList("Board.list");
     }
 
+    public Board findById(Long id) {
+        return sqlSessionTemplate.selectOne("Board.findById", id);
+    }
+
+    public Board findByTitle(String boardTitle) {
+        return sqlSessionTemplate.selectOne("Board.findByTitle", boardTitle);
+    }
+
 }
