@@ -18,6 +18,7 @@ public class RequestBoardDto {
     private String boardTitle;
     private String boardContents;
 //    @Email // 이메일 형식이 아닌 경우 Exception 발생
-//    private String email;
+//    private String emaill
+//    Custom Exception도 작성가능
 
 }

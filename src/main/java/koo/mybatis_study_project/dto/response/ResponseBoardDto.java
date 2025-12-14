@@ -1,11 +1,13 @@
 package koo.mybatis_study_project.dto.response;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 // @Getter + @Setter + @ToString == @Data
 @Getter @Setter @ToString
+@NoArgsConstructor
 public class ResponseBoardDto {
 
     private Long id;

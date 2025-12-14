@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -53,6 +54,27 @@ public class BoardController {
         model.addAttribute("boardList", collect);
 
         return "boards/boardList";
+    }
+
+    @GetMapping("/boards/{id}")
+    public String boardOneDetail(@PathVariable("id") Long id, Model model) {
+        // 조회수 증가 처리
+        boardService.updateHits(id);
+        // 상세내용 가져오기
+        Board board = boardService.findById(id);
+
+        ResponseBoardDto responseBoardDto = new ResponseBoardDto();
+        responseBoardDto.setId(board.getId());
+        responseBoardDto.setBoardWriter(board.getBoardWriter());
+        responseBoardDto.setBoardTitle(board.getBoardTitle());
+        responseBoardDto.setBoardContents(board.getBoardContents());
+        responseBoardDto.setBoardHits(board.getBoardHits());
+        responseBoardDto.setCreatedAt(board.getCreatedAt());
+
+        log.info("responseBoardDto = {}", responseBoardDto);
+        model.addAttribute("board", responseBoardDto);
+
+        return "boards/boardOneDetail";
     }
 
 }
