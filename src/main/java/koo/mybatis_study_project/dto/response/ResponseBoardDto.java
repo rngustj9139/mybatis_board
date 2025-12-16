@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-// @Getter + @Setter + @ToString == @Data
+// @Getter + @Setter + @ToString + @RequiredArgsConstructor == @Data
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class ResponseBoardDto {
@@ -19,6 +19,14 @@ public class ResponseBoardDto {
 
     public ResponseBoardDto(Long id, String boardWriter, String boardTitle, String boardContents, int boardHits, String createdAt) {
         this.id = id;
+        this.boardWriter = boardWriter;
+        this.boardTitle = boardTitle;
+        this.boardContents = boardContents;
+        this.boardHits = boardHits;
+        this.createdAt = createdAt;
+    }
+
+    public ResponseBoardDto(String boardWriter, String boardTitle, String boardContents, int boardHits, String createdAt) {
         this.boardWriter = boardWriter;
         this.boardTitle = boardTitle;
         this.boardContents = boardContents;
