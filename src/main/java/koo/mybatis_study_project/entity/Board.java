@@ -4,6 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Rest API를 사용한다면 하기 어노테이션 모음 사용
+ * @Entity
+ * @DynamicUpdate
+ * @NoArgsConstructor
+ * @AllArgsConstructor
+ * @Builder
+ * @Getter @Setter
+ */
 @Getter @Setter @ToString
 public class Board {
 
