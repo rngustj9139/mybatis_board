@@ -33,7 +33,7 @@ public class BoardApiController {
         return collect;
     }
 
-    @PostMapping("/api/boards/new")
+    @PostMapping("/api/boards")
     public CreateBoardResponse createBoard(@RequestBody @Valid RequestBoardDto requestBoardDto) {
         Board board = new Board();
 

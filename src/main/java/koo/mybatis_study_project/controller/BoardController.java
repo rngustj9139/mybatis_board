@@ -20,11 +20,19 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    /**
+     * Rest API와 MVC 패턴의 URL 작성법은 다르다.
+     * Rest API의 URL의 경우 URL이 같더라도 HTTP 메서드 매핑 방식의 차이로 인해 문제가 발생하지 않는다 (e.g. @GetMapping("/api/boards"), @PostMapping("/api/boards"))
+     * MVC의 URL의 경우 URL을 통해 웹 페이지를 먼저 보여주고, form의 method가 POST인 것을 제외하면 거의 @GetMapping 어노테이션을 사용한다. (e.g. 하기 HTTP 메서드 어노테이션 참고)
+     */
     @GetMapping("/boards/new")
     public String boardCreateForm() {
         return "boards/boardCreateForm";
     }
 
+    /**
+     *
+     */
     @PostMapping("/boards/new")
     public String boardCreate(@ModelAttribute RequestBoardDto boardDto) {
         log.info("boardDto = {}", boardDto);
@@ -74,10 +82,13 @@ public class BoardController {
         return "boards/boardOneDetail";
     }
 
-    @PatchMapping("/boards/{id}/edit") // 게시글 일부 수정
+    /**
+     *
+     */
+    @GetMapping("/boards/{id}/edit") // 게시글 일부 수정
     public String boardEdit(@PathVariable("id") Long id, Model model) {
         Board board = boardService.findById(id);
-
+        // ResponseBoardDto에 @Builder 어노테이션 적용? (빌더패턴)
 
         return "boards/boardEditForm";
     }
