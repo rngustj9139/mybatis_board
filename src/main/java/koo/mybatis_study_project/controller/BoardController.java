@@ -83,6 +83,11 @@ public class BoardController {
     public String boardEdit(@PathVariable("id") Long id, Model model) {
         Board board = boardService.findById(id);
         // ResponseBoardDto에 @Builder 어노테이션 적용? (빌더패턴)
+        ResponseBoardDto responseBoardDto = new ResponseBoardDto();
+        responseBoardDto.setBoardTitle(board.getBoardTitle());
+        responseBoardDto.setBoardContents(board.getBoardContents());
+
+        model.addAttribute("responseBoardDto", responseBoardDto);
 
         return "boards/boardEditForm";
     }

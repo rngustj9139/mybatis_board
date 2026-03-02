@@ -16,7 +16,8 @@ public class BoardRepository {
     public void boardCreate(Board board) {
         // 테이블 생성 필요 (board-mapper.xml 파일의 주석 참고, 테이블에 데이터 insert)
         // board 객체를 파라미터로 넘긴다.
-        sqlSessionTemplate.insert("Board.create", board); // Board는 board-mapper.xml의 Board를 의미, create는 쿼리문을 담고 있는 태그를 의미 (board-mapper.xml에 작성)
+        // Board는 board-mapper.xml의 Board를 의미, create는 쿼리문을 담고 있는 태그를 의미 (board-mapper.xml에 작성)
+        sqlSessionTemplate.insert("Board.create", board);
     }
 
     public List<Board> boardList() {

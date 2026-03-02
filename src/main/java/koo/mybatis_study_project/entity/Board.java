@@ -12,6 +12,8 @@ import lombok.ToString;
  * @AllArgsConstructor
  * @Builder
  * @Getter @Setter
+ *
+ * @Data는 @Getter + @Setter + @ToString이다.
  */
 @Getter @Setter @ToString
 public class Board {

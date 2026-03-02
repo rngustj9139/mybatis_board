@@ -34,7 +34,8 @@ IntelliJ Community 버전에서는 XML 오타를 잡아주지 않는다 but Inte
 -->
 <mapper namespace="Board">
     <insert id="create" parameterType="board"> <!-- parameterType의 board는 mybatis-config.xml에서 BoardDto를 alias로 board로 지정한 것을 의미 -->
-        insert into board_table(boardTitle, boardWriter, boardPass, boardContents) values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
+        insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
+        values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
 
     <select id="list" resultType="board">
